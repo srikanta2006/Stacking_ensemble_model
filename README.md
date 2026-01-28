@@ -18,6 +18,7 @@ stacking_ensemble/
 ├── streamlit_app.py          # Streamlit web application
 ├── kc_house_data.csv         # KC House dataset
 ├── requirements.txt          # Python dependencies
+├── .streamlit/config.toml    # Streamlit configuration
 └── README.md                 # This file
 ```
 
@@ -64,44 +65,16 @@ The app will open in your browser at `http://localhost:8501`
 
 ### Option 2: Deploy on Heroku
 
-1. Create a `Procfile`:
-```
-web: streamlit run streamlit_app.py --logger.level=error
-```
-
-2. Create an `setup.sh`:
-```bash
-#!/bin/bash
-mkdir -p ~/.streamlit/
-echo "[server]
-headless = true
-port = $PORT
-enableCORS = false
-" > ~/.streamlit/config.toml
-```
-
-3. Deploy:
 ```bash
 heroku create your-app-name
 git push heroku main
 ```
 
-### Option 3: Deploy on AWS/Google Cloud
+### Option 3: Other Cloud Platforms
 
-Use Docker:
-
-```dockerfile
-FROM python:3.9
-WORKDIR /app
-COPY . .
-RUN pip install -r requirements.txt
-EXPOSE 8501
-CMD ["streamlit", "run", "streamlit_app.py"]
-```
-
-### Option 4: Deploy on Azure
-
-Use Azure App Service with Python runtime
+- **Railway** - Push and deploy automatically
+- **Render** - Free tier available for Streamlit apps
+- **Replit** - Online IDE with deployment
 
 ## 📈 Features of the Streamlit App
 
@@ -160,10 +133,11 @@ Use Azure App Service with Python runtime
 
 | File | Purpose |
 |------|---------|
-| `app.py` | Train models and display console output |
 | `streamlit_app.py` | Interactive web application |
+| `app.py` | Model training script |
 | `kc_house_data.csv` | Training dataset |
 | `requirements.txt` | Python package dependencies |
+| `README.md` | Project documentation |
 
 ## 🚀 Next Steps
 
