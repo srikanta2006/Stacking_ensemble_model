@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 # Import the dataset
 data = pd.read_csv('./kc_house_data.csv')
 print("DATA HEADER")
@@ -9,7 +9,7 @@ print("\nNULL VALUES")
 print(data.isnull().sum())
 
 #label encode and one hot encode categorical features
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder # type: ignore
 le = LabelEncoder()
 data['waterfront'] = le.fit_transform(data['waterfront'])
 data = pd.get_dummies(data, columns=['view', 'condition', 'grade'], drop_first=True)
@@ -23,11 +23,11 @@ y = (data['price'] > median_price).astype(int)
 
 
 #split the data into training and testing sets
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split # type: ignore
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 #standardize the features
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler # type: ignore
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
@@ -37,11 +37,10 @@ print("\n" + "="*60)
 print("TASK 2: TRAINING BASE MODELS")
 print("="*60)
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.linear_model import LogisticRegression # type: ignore
+from sklearn.tree import DecisionTreeClassifier # type: ignore
+from sklearn.neighbors import KNeighborsClassifier # type: ignore
+from sklearn.metrics import accuracy_score, classification_report # type: ignore
 
 # Base Model 1: Logistic Regression
 print("\n--- Base Model 1: Logistic Regression ---")
@@ -97,11 +96,11 @@ print("\n" + "="*60)
 print("TASK 3: STACKING ENSEMBLE MODEL")
 print("="*60)
 
-from sklearn.ensemble import StackingClassifier
+from sklearn.ensemble import StackingClassifier # type: ignore
 
 print("\nBuilding stacking model with:")
 print("  - Base Models: Logistic Regression, Decision Tree, KNN")
-print("  - Meta-Model: Linear Regression")
+print("  - Meta-Model: Logistic Regression")
 
 base_learners = [
     ('lr', LogisticRegression(max_iter=1000, random_state=42)),

@@ -1,17 +1,17 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
+import streamlit as st # type: ignore
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
 import pickle
-import joblib
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import StackingClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-import matplotlib.pyplot as plt
-import seaborn as sns
+import joblib # type: ignore
+from sklearn.preprocessing import LabelEncoder, StandardScaler # type: ignore
+from sklearn.linear_model import LogisticRegression # type: ignore
+from sklearn.tree import DecisionTreeClassifier # type: ignore
+from sklearn.neighbors import KNeighborsClassifier # type: ignore
+from sklearn.ensemble import StackingClassifier # type: ignore
+from sklearn.model_selection import train_test_split # type: ignore
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+import seaborn as sns # type: ignore
 
 # Page configuration
 st.set_page_config(
